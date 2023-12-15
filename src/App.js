@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { useState } from "react";
+import Messagebox from "./components/Messagebox";
+import Heroscreen from "./ui-components/Heroscreen";
+import Whylist from "./ui-components/Whylist";
+import Questions from "./ui-components/Questions";
 
 function App() {
+  const [time] = useState(() => {
+    return new Date().getFullYear();
+  });
+  const [show, setShow] = useState(true);
+  const [isContentVisible, setIsContentVisible] = useState(false);
+
+  const toggleContent = () => {
+    setIsContentVisible(!isContentVisible);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {show && <Messagebox show={show} setShow={setShow} />}
+      <Header></Header>
+      <Heroscreen></Heroscreen>
+      <Whylist />
+      <Questions isContentVisible={isContentVisible} toggleContent={toggleContent} />
+      <Footer year={time}></Footer>
     </div>
   );
 }
