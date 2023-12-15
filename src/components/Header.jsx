@@ -4,7 +4,7 @@ import spotifylogo from "../assets/spotify-logo.svg";
 const Header = () => {
   return (
     <header>
-      <div className="flex flex-row items-center justify-between bg-black px-[12vw] py-4 w-[100vw] h-20 ">
+      <div className="flex flex-row items-center justify-between bg-black px-[12vw] py-4 w-full h-20 ">
         <div className="flex flex-row justify-center items-center gap-1">
           <img
             src={spotifylogo}
